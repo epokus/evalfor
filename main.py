@@ -140,27 +140,23 @@ def zone_callback():
         zone_sel = zone.value
         sel_color = color[zone_sel[0]]
 
-        print(1)
         temp = cds.data
         temp['zone'][mins:maxs] = int(zone_sel[0])
         temp['grmax'][mins:maxs] = int(gr_input.value[1])
         temp['grmin'][mins:maxs] = int(gr_input.value[0])
+        print(float(rhoma_input.value))
         temp['rhoma'][mins:maxs] = float(rhoma_input.value)
-        temp['rhoma'][mins:maxs] = float(rhofl_input.value)
+        temp['rhofl'][mins:maxs] = float(rhofl_input.value)
         temp['phish'][mins:maxs] = float(phish_input.value)
         temp['color'][mins:maxs] = sel_color
 
         temp = calc_petro(temp)
-        print(123)
         cds.data = dict(temp)
-        print(123)
 
         temp = cds.data['zone'].reshape(-1, 1)[::-1]
         temp[0] = 0
         temp[-1] = 12
         zone_data.data['image'] = [temp]
-
-
 
         # new_data = zone.value
         # temp = cds.data['zone']
